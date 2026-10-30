@@ -124,7 +124,7 @@ def causal_conv1d_update_ref(
 @pytest.mark.parametrize("silu_activation", [False, True])
 @pytest.mark.parametrize("has_bias", [False, True])
 @pytest.mark.parametrize("seqlen", [1])
-@pytest.mark.parametrize("width", [4])
+@pytest.mark.parametrize("width", [4, 7])
 @pytest.mark.parametrize("dim", [2048, 2048 + 16, 4096])
 def test_causal_conv1d_update(dim, width, seqlen, has_bias, silu_activation, itype):
     device = DEVICE
@@ -166,7 +166,7 @@ def test_causal_conv1d_update(dim, width, seqlen, has_bias, silu_activation, ity
 @pytest.mark.parametrize("silu_activation", [False, True])
 @pytest.mark.parametrize("has_bias", [False, True])
 @pytest.mark.parametrize("seqlen", [1, 3])
-@pytest.mark.parametrize("width", [3, 4])
+@pytest.mark.parametrize("width", [3, 4, 7])
 @pytest.mark.parametrize("dim", [2048 + 16, 4096])
 # tests correctness in case subset of the sequences are padded
 @pytest.mark.parametrize("with_padding", [True, False])
@@ -245,7 +245,7 @@ def test_causal_conv1d_update_with_batch_gather(
 @pytest.mark.parametrize("itype", [torch.bfloat16])
 @pytest.mark.parametrize("silu_activation", [True])
 @pytest.mark.parametrize("has_bias", [True])
-@pytest.mark.parametrize("width", [4])
+@pytest.mark.parametrize("width", [4, 5, 6, 7])
 @pytest.mark.parametrize("seqlen", [8, 249, 4096])
 @pytest.mark.parametrize("dim", [64, 4096])
 @pytest.mark.parametrize("with_padding", [True, False])
